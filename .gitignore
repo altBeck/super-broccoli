@@ -14,6 +14,7 @@ dist
 # Local planning prompts
 caesar_setup_agent.md
 caesar_build_guardrails.md
+caesar_seo_profile_prompt.md
 
 # Local package manager and editor artifacts
 npm-debug.log*

@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { siteConfig } from "@/data/site";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createSeoMetadata({
   title: "Contact",
-  description: "Contact Beck Kanno for product design and design engineering work.",
-};
+  description:
+    "Contact Beck Kanno for product design, UX architecture, design systems, and build-ready interface work.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -21,9 +23,15 @@ export default function ContactPage() {
           </h1>
         </div>
         <div className="space-y-6 text-lg leading-8 text-muted">
+          <p>Have a project in mind?</p>
           <p>
-            Caesar uses direct contact links in v1. A form can come later with
-            validation, rate limiting, spam protection, and server-side secrets.
+            I&apos;m open to thoughtful product design, UX architecture, and
+            design engineering work, especially around fintech, AI tools,
+            compliance, workflow-heavy products, and early-stage product
+            systems.
+          </p>
+          <p>
+            Send a note and we can figure out if there&apos;s a useful fit.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link

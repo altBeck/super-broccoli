@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { NoteCard } from "@/components/notes/NoteCard";
 import { publicNotes } from "@/data/notes";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createSeoMetadata({
   title: "Notes",
-  description: "Working notes from Beck Kanno on design, systems, and building Caesar.",
-};
+  description:
+    "Notes by Beck Kanno on product design, UX architecture, AI tools, complex workflows, systems thinking, and building Caesar.",
+  path: "/notes",
+});
 
 export default function NotesPage() {
   return (
@@ -19,8 +21,7 @@ export default function NotesPage() {
           A writing garden, prepared lightly.
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted">
-          Placeholder notes live here for now. The structure is ready for MDX
-          later without pretending to be a full CMS today.
+          Notes on product design, systems, AI, workflows, and building Caesar.
         </p>
       </div>
       <div>

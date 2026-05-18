@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { now } from "@/data/now";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createSeoMetadata({
   title: "Now",
-  description: "What Beck Kanno is building, thinking about, and focused on now.",
-};
+  description:
+    "What Beck Kanno is currently building, thinking about, reading, and exploring across product design, AI tools, and internet garden experiments.",
+  path: "/now",
+});
 
 export default function NowPage() {
   return (
@@ -17,6 +19,10 @@ export default function NowPage() {
         <h1 className="mt-4 text-5xl font-semibold leading-tight sm:text-7xl">
           {now.currentMode}
         </h1>
+        <p className="mt-6 text-lg leading-8 text-muted">
+          A living snapshot of what I&apos;m building, thinking about, and
+          exploring right now.
+        </p>
       </div>
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         <NowPanel title="Building" items={now.building} />

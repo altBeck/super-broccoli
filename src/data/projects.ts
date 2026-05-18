@@ -22,6 +22,7 @@ export type Project = {
   role: string[];
   domain: string[];
   summary: string;
+  longDescription: string;
   featured: boolean;
   visibility: ProjectVisibility;
   caseStudyStatus: CaseStudyStatus;
@@ -40,6 +41,8 @@ export const projects: Project[] = [
     domain: ["AI", "Analytics", "Team Workflows"],
     summary:
       "An observability dashboard for understanding AI usage, behavior, cost, and value across teams.",
+    longDescription:
+      "Ledger is an AI observability dashboard for teams trying to understand how AI is being used across products, workflows, and people. It tracks usage, behavior, cost, and value so teams can make better decisions about adoption, governance, and impact.",
     featured: true,
     visibility: "public",
     caseStudyStatus: "stub",
@@ -56,6 +59,8 @@ export const projects: Project[] = [
     domain: ["Mobility", "B2B", "Consumer Apps"],
     summary:
       "A mobile-first mobility platform combining ride sharing, car rentals, and organisation-based commute services.",
+    longDescription:
+      "Dash is a mobile-first mobility platform for ride sharing, car rentals, and B2B commute services. The product separates personal mobility from organisation-managed commute flows, supporting riders, organisation heads, members, and drivers across a coherent mobile experience.",
     featured: true,
     visibility: "public",
     caseStudyStatus: "stub",
@@ -72,6 +77,8 @@ export const projects: Project[] = [
     domain: ["Desktop Apps", "Video", "Productivity"],
     summary:
       "A desktop app that helps users compress and transcribe long recordings without touching FFmpeg commands.",
+    longDescription:
+      "sunDial is a desktop video compression and transcription tool for long recordings, product demos, client feedback sessions, and internal walkthroughs. It uses intent-based presets to turn technical compression decisions into simple user choices.",
     featured: true,
     visibility: "public",
     caseStudyStatus: "stub",
@@ -88,6 +95,8 @@ export const projects: Project[] = [
     domain: ["Fintech", "Payments", "Dashboards"],
     summary:
       "A desktop financial dashboard for managing payments, accounts, virtual cards, and multi-rail finance operations.",
+    longDescription:
+      "Puplar Desktop is a redesigned fintech dashboard for managing local currency, crypto-enabled funding, international banking, virtual dollar cards, accounts, and transactions from a clearer financial command center.",
     featured: true,
     visibility: "public",
     caseStudyStatus: "stub",
@@ -104,6 +113,8 @@ export const projects: Project[] = [
     domain: ["Fintech", "Crypto", "Mobile Banking"],
     summary:
       "A mobile banking and wallet experience for crypto funding, virtual dollar cards, and transaction management.",
+    longDescription:
+      "Puplar Mobile is a mobile fintech wallet for managing crypto-enabled funding, international banking, virtual dollar cards, balances, and everyday transactions from one app.",
     featured: true,
     visibility: "public",
     caseStudyStatus: "stub",

@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { ProjectGrid } from "@/components/work/ProjectGrid";
 import { publicProjects } from "@/data/projects";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createSeoMetadata({
   title: "Work",
-  description: "Selected product design and design engineering work by Beck Kanno.",
-};
+  description:
+    "Selected product design work by Beck Kanno across AI observability, mobility, fintech, video productivity, and complex workflow systems.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (
@@ -19,9 +21,8 @@ export default function WorkPage() {
           Case studies and product systems.
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted">
-          Public projects are shown here by default. Draft, private, and future
-          password-protected work stay out of the public grid until they are
-          ready.
+          Selected work across AI tools, fintech, mobility, productivity, and
+          workflow-heavy systems.
         </p>
       </div>
       <ProjectGrid projects={publicProjects} />

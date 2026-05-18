@@ -5,6 +5,10 @@ import { StudioShell } from "@/components/studio/StudioShell";
 export const metadata: Metadata = {
   title: "Studio",
   description: "Future private studio shell for Caesar.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function StudioLayout({ children }: { children: ReactNode }) {

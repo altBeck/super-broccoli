@@ -2,10 +2,10 @@ import { studioEnabled } from "@/lib/studio";
 
 export const publicNav = [
   { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
   { label: "Notes", href: "/notes" },
   { label: "Now", href: "/now" },
   { label: "Lab", href: "/lab" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 

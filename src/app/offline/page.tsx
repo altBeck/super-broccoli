@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createSeoMetadata({
   title: "Offline",
   description: "Caesar offline fallback page.",
-};
+  path: "/offline",
+  noIndex: true,
+});
 
 export default function OfflinePage() {
   return (

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { getPublicNote, publicNotes } from "@/data/notes";
+import { createSeoMetadata } from "@/lib/seo";
 
 type NotePageProps = {
   params: Promise<{
@@ -22,13 +23,18 @@ export async function generateMetadata({
   if (!note) {
     return {
       title: "Note not found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  return {
+  return createSeoMetadata({
     title: note.title,
     description: note.excerpt,
-  };
+    path: `/notes/${note.slug}`,
+  });
 }
 
 export default async function NotePage({ params }: NotePageProps) {

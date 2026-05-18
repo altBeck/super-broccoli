@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createSeoMetadata({
   title: "Colophon",
-  description: "Build notes, tools, credits, and site philosophy for Caesar.",
-};
+  description:
+    "How Caesar, Beck Kanno's portfolio and internet garden, was designed and built.",
+  path: "/colophon",
+});
 
 export default function ColophonPage() {
   return (
@@ -18,18 +20,16 @@ export default function ColophonPage() {
         </h1>
         <div className="mt-10 space-y-6 text-lg leading-8 text-muted">
           <p>
-            Built with Next.js App Router, TypeScript, Tailwind CSS, Inter
-            Tight, and Geist Mono.
+            Caesar is my portfolio, internet garden, and personal playground.
           </p>
           <p>
-            The public site is static-first. The private studio architecture is
-            scaffolded for later, but real authentication and write workflows
-            are intentionally not implemented in v1.
+            It is built to collect projects, notes, experiments, references, and
+            the ongoing process of becoming a sharper product designer and
+            builder.
           </p>
           <p>
-            The design system uses CSS variables for theme tokens, class-based
-            dark mode, and data-driven content models for work, notes, and
-            current status.
+            Designed in Figma. Built with Next.js, Tailwind CSS, Inter Tight,
+            and Geist Mono.
           </p>
         </div>
       </div>

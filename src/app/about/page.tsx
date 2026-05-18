@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "About Beck Kanno and the product design practice behind Caesar.",
-};
+export const metadata = createSeoMetadata({
+  title: "About Beck",
+  description:
+    "About Beck Kanno, a product designer focused on complex products, fintech, compliance, AI tools, UX architecture, and build-ready product systems.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -20,17 +22,32 @@ export default function AboutPage() {
         </div>
         <div className="space-y-6 text-lg leading-8 text-muted">
           <p>
-            Beck Kanno is a product designer working across strategy, UX
-            architecture, and build-ready interface design.
+            I&apos;m Beck Kanno, a product designer who likes working where
+            products are still messy.
           </p>
           <p>
-            The work is usually closest to fintech, compliance, AI tooling, and
-            enterprise workflows: spaces where clarity, trust, and operational
-            detail matter.
+            Most of my work sits in the space between product strategy, UX
+            architecture, and interface design. I help teams take ambiguous
+            ideas, dense workflows, and edge cases, then shape them into systems
+            people can understand, build, and use.
           </p>
           <p>
-            Caesar is the public home for selected work, notes, experiments, and
-            the systems used to keep those things alive over time.
+            I&apos;ve worked across fintech, trade finance, compliance, AI
+            tools, mobility, productivity tools, and internal business systems.
+            The common thread is complexity. I&apos;m usually drawn to products
+            where the hard part is not just making screens look good, but
+            figuring out how the system should work.
+          </p>
+          <p>
+            I care about clarity, logic, strong information architecture, and
+            interfaces that are honest about the complexity behind them. I also
+            care about making work build-ready, because design that cannot
+            survive implementation is just decoration.
+          </p>
+          <p>
+            Caesar is my portfolio, internet garden, and personal playground. It
+            is where I collect work, notes, experiments, and the ongoing process
+            of becoming a sharper designer-builder.
           </p>
         </div>
       </div>

@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { publicNotes } from "@/data/notes";
 import { publicProjects } from "@/data/projects";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -14,7 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/lab",
     "/contact",
     "/colophon",
-    "/offline",
   ];
 
   return [

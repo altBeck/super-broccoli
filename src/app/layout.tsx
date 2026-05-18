@@ -5,7 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SiteBanner } from "@/components/layout/SiteBanner";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { StructuredData } from "@/components/seo/StructuredData";
 import { siteConfig } from "@/data/site";
+import { defaultOgImage, siteUrl } from "@/lib/seo";
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -23,17 +25,33 @@ const playfairDisplay = Playfair_Display({
   style: ["italic"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Beck Kanno - Product Designer",
-    template: "%s - Caesar",
+    default: "Beck Kanno — Product Designer",
+    template: "%s — Beck Kanno",
   },
-  description:
-    "Product designer making complex products make sense across fintech, compliance, AI tools, and enterprise workflows.",
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
   applicationName: "Caesar",
+  authors: [{ name: "Beck Kanno" }],
+  creator: "Beck Kanno",
+  publisher: "Beck Kanno",
+  keywords: [
+    "Beck Kanno",
+    "Product Designer",
+    "UX Designer",
+    "UX Architect",
+    "Design Engineer",
+    "Fintech Product Designer",
+    "AI Product Designer",
+    "Compliance Product Designer",
+    "Enterprise UX",
+    "Product Design Portfolio",
+    "Nigeria Product Designer",
+  ],
   manifest: "/manifest.webmanifest",
   icons: {
     icon: "/icons/caesar-logo.svg",
@@ -41,18 +59,30 @@ export const metadata: Metadata = {
     apple: "/icons/caesar-logo.svg",
   },
   openGraph: {
-    title: "Beck Kanno - Product Designer",
-    description:
-      "Product designer making complex products make sense across fintech, compliance, AI tools, and enterprise workflows.",
+    title: "Beck Kanno — Product Designer",
+    description: siteConfig.description,
     siteName: "Caesar",
-    url: siteUrl,
+    url: "/",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: "Beck Kanno — Product Designer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beck Kanno - Product Designer",
-    description:
-      "Product designer making complex products make sense across fintech, compliance, AI tools, and enterprise workflows.",
+    title: "Beck Kanno — Product Designer",
+    description: siteConfig.description,
+    images: [defaultOgImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -82,6 +112,7 @@ export default function RootLayout({
       >
         <ThemeInitScript />
         <ThemeProvider>
+          <StructuredData />
           <SiteBanner banner={siteConfig.banner} />
           <div className="flex min-h-screen flex-col pt-8">
             <Header />

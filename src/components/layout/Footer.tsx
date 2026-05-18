@@ -14,6 +14,14 @@ const toolIcons = [
   { src: figmaIcon, alt: "Figma" },
 ];
 
+const footerLinks = [
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Now", href: "/now" },
+  { label: "Notes", href: "/notes" },
+  { label: "Lab", href: "/lab" },
+];
+
 export function Footer() {
   return (
     <footer className="bg-footer-bg text-footer-fg">
@@ -55,8 +63,24 @@ export function Footer() {
             </Link>
           </div>
 
+          <nav
+            aria-label="Footer"
+            className="mt-9 flex flex-wrap gap-x-5 gap-y-3 text-[15px] font-semibold tracking-[-0.02em] text-footer-fg/80"
+          >
+            {footerLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition hover:text-footer-fg"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
           <div className="mt-14 space-y-4 text-[15px] leading-5 tracking-[-0.04em] text-footer-fg/80 md:mt-14">
             <p>Made with sleepless nights and procrastination</p>
+            <p>Designed in Figma. Built with Next.js and Tailwind CSS.</p>
             <div className="flex flex-wrap items-center gap-3">
               <span>Designed using</span>
               {toolIcons.map((icon) => (

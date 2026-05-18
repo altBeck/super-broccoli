@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { ProjectArtwork } from "@/components/work/ProjectArtwork";
 import { ProjectMeta } from "@/components/work/ProjectMeta";
 import { getPublicProject, publicProjects } from "@/data/projects";
+import { createSeoMetadata } from "@/lib/seo";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -24,13 +25,25 @@ export async function generateMetadata({
   if (!project) {
     return {
       title: "Project not found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  return {
+  const image =
+    typeof project.coverImage === "string"
+      ? project.coverImage
+      : project.coverImage.src;
+
+  return createSeoMetadata({
     title: project.title,
     description: project.summary,
-  };
+    path: `/work/${project.slug}`,
+    openGraphTitle: `${project.title} — ${project.label}`,
+    image,
+  });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

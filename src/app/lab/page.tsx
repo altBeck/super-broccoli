@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createSeoMetadata({
   title: "Lab",
-  description: "Experiments and playground space inside Caesar.",
-};
+  description:
+    "Experiments, prototypes, tiny tools, and unfinished product ideas by Beck Kanno.",
+  path: "/lab",
+});
 
 export default function LabPage() {
   return (
@@ -17,9 +19,7 @@ export default function LabPage() {
           Experiments will live here.
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted">
-          This placeholder keeps Caesar ready for small tools, prototypes, and
-          design engineering experiments without turning v1 into a playground
-          build.
+          Small experiments, prototypes, tools, and unfinished thoughts.
         </p>
       </div>
     </Container>
