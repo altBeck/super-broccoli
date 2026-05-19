@@ -7,7 +7,12 @@ import { SiteBanner } from "@/components/layout/SiteBanner";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { siteConfig } from "@/data/site";
-import { defaultOgImage, defaultOgImageSize, siteUrl } from "@/lib/seo";
+import {
+  absoluteUrl,
+  defaultOgImage,
+  defaultOgImageSize,
+  siteUrl,
+} from "@/lib/seo";
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -33,7 +38,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   alternates: {
-    canonical: "/",
+    canonical: absoluteUrl("/"),
   },
   applicationName: "Caesar",
   authors: [{ name: "Beck Kanno" }],
@@ -63,12 +68,12 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: "Caesar",
-    url: "/",
+    url: absoluteUrl("/"),
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: defaultOgImage,
+        url: absoluteUrl(defaultOgImage),
         width: defaultOgImageSize.width,
         height: defaultOgImageSize.height,
         alt: siteConfig.title,
@@ -79,7 +84,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [defaultOgImage],
+    images: [absoluteUrl(defaultOgImage)],
   },
   robots: {
     index: true,

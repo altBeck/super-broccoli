@@ -15,11 +15,10 @@ const toolIcons = [
 ];
 
 const footerLinks = [
+  { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Now", href: "/now" },
-  { label: "Notes", href: "/notes" },
   { label: "Lab", href: "/lab" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Footer() {

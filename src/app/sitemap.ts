@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { publicNotes } from "@/data/notes";
-import { publicProjects } from "@/data/projects";
+import { indexableNotes } from "@/data/notes";
+import { indexableProjects } from "@/data/projects";
 import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,11 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}${route}`,
       lastModified: new Date(),
     })),
-    ...publicProjects.map((project) => ({
+    ...indexableProjects.map((project) => ({
       url: `${siteUrl}/work/${project.slug}`,
       lastModified: new Date(),
     })),
-    ...publicNotes.map((note) => ({
+    ...indexableNotes.map((note) => ({
       url: `${siteUrl}/notes/${note.slug}`,
       lastModified: new Date(note.date),
     })),

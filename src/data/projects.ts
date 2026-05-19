@@ -125,6 +125,16 @@ export const publicProjects = projects.filter(
   (project) => project.visibility === "public",
 );
 
+export function isIndexableProject(project: Project) {
+  return project.visibility === "public";
+}
+
+export const indexableProjects = projects.filter(isIndexableProject);
+
 export function getPublicProject(slug: string) {
   return publicProjects.find((project) => project.slug === slug);
+}
+
+export function getIndexableProject(slug: string) {
+  return indexableProjects.find((project) => project.slug === slug);
 }

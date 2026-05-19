@@ -33,22 +33,25 @@ export function createSeoMetadata({
   image = defaultOgImage,
   noIndex = false,
 }: SeoMetadataOptions): Metadata {
+  const canonicalUrl = absoluteUrl(path);
+  const imageUrl = absoluteUrl(image);
+
   return {
     title,
     description,
     alternates: {
-      canonical: path,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: openGraphTitle,
       description: openGraphDescription,
-      url: path,
+      url: canonicalUrl,
       siteName: siteConfig.name,
       type: "website",
       locale: "en_US",
       images: [
         {
-          url: image,
+          url: imageUrl,
           width: defaultOgImageSize.width,
           height: defaultOgImageSize.height,
           alt: openGraphTitle,
@@ -59,7 +62,7 @@ export function createSeoMetadata({
       card: "summary_large_image",
       title: openGraphTitle,
       description: openGraphDescription,
-      images: [image],
+      images: [imageUrl],
     },
     robots: noIndex
       ? {

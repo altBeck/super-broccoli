@@ -42,8 +42,18 @@ export const notes: Note[] = [
   },
 ];
 
-export const publicNotes = notes.filter((note) => !note.draft);
+export function isIndexableNote(note: Note) {
+  return !note.draft;
+}
+
+export const publicNotes = notes.filter(isIndexableNote);
+
+export const indexableNotes = notes.filter(isIndexableNote);
 
 export function getPublicNote(slug: string) {
   return publicNotes.find((note) => note.slug === slug);
+}
+
+export function getIndexableNote(slug: string) {
+  return indexableNotes.find((note) => note.slug === slug);
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const menuLinks = [
@@ -11,22 +10,29 @@ const menuLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function HeaderMenu() {
-  const [open, setOpen] = useState(false);
+type HeaderMenuProps = {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+};
 
+export function HeaderMenu({ open, onOpenChange }: HeaderMenuProps) {
   return (
-    <div className="flex items-center gap-5">
+    <div
+      className={`ml-auto flex min-w-0 items-center gap-3 sm:gap-5 ${
+        open ? "w-full md:w-auto" : "w-auto"
+      }`}
+    >
       <div
-        className={`relative flex h-11 items-center justify-end overflow-hidden transition-[width] duration-200 ease-out ${
-          open ? "w-[330px]" : "w-[46px]"
+        className={`relative flex h-11 min-w-0 items-center justify-end overflow-hidden transition-[width] duration-200 ease-out ${
+          open ? "w-[calc(100%-56px)] md:w-[330px]" : "w-[62px] md:w-[46px]"
         }`}
       >
         <button
           type="button"
-          onClick={() => setOpen(true)}
+          onClick={() => onOpenChange(true)}
           aria-expanded={open}
           aria-controls="primary-menu"
-          className={`absolute right-0 text-[16px] font-semibold leading-none text-[#3c3c3c] transition duration-150 ease-out hover:-translate-y-px hover:text-foreground active:translate-y-0 dark:text-[#f1f4ee] dark:hover:text-white ${
+          className={`absolute right-0 text-[18px] font-semibold leading-none text-[#3c3c3c] transition duration-150 ease-out hover:-translate-y-px hover:text-foreground active:translate-y-0 dark:text-[#f1f4ee] dark:hover:text-white md:text-[16px] ${
             open
               ? "pointer-events-none -translate-x-5 opacity-0"
               : "translate-x-0 opacity-100"
@@ -38,7 +44,7 @@ export function HeaderMenu() {
         <nav
           id="primary-menu"
           aria-label="Primary"
-          className={`absolute right-0 flex items-center gap-5 whitespace-nowrap text-[16px] font-semibold leading-none text-[#3c3c3c] transition duration-200 ease-out dark:text-[#f1f4ee] ${
+          className={`absolute right-0 flex items-center gap-3 whitespace-nowrap text-[16px] font-semibold leading-none text-[#3c3c3c] transition duration-200 ease-out sm:gap-4 sm:text-[18px] md:gap-5 md:text-[16px] dark:text-[#f1f4ee] ${
             open
               ? "translate-x-0 opacity-100"
               : "pointer-events-none translate-x-6 opacity-0"
@@ -48,7 +54,7 @@ export function HeaderMenu() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setOpen(false)}
+              onClick={() => onOpenChange(false)}
               className={`transition duration-150 ease-out hover:-translate-y-px hover:text-foreground active:translate-y-0 dark:hover:text-white ${
                 open
                   ? "translate-x-0 opacity-100"
@@ -61,11 +67,13 @@ export function HeaderMenu() {
           ))}
           <button
             type="button"
-            onClick={() => setOpen(false)}
+            onClick={() => onOpenChange(false)}
             className={`transition duration-150 ease-out hover:-translate-y-px hover:text-foreground active:translate-y-0 dark:hover:text-white ${
               open ? "translate-x-0 opacity-100" : "translate-x-3 opacity-0"
             }`}
-            style={{ transitionDelay: open ? `${menuLinks.length * 18}ms` : "0ms" }}
+            style={{
+              transitionDelay: open ? `${menuLinks.length * 18}ms` : "0ms",
+            }}
           >
             Close
           </button>

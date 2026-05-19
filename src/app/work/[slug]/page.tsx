@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { ProjectArtwork } from "@/components/work/ProjectArtwork";
 import { ProjectMeta } from "@/components/work/ProjectMeta";
-import { getPublicProject, publicProjects } from "@/data/projects";
+import { getIndexableProject, indexableProjects } from "@/data/projects";
 import { createSeoMetadata } from "@/lib/seo";
 
 type ProjectPageProps = {
@@ -13,14 +13,14 @@ type ProjectPageProps = {
 };
 
 export function generateStaticParams() {
-  return publicProjects.map((project) => ({ slug: project.slug }));
+  return indexableProjects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = getPublicProject(slug);
+  const project = getIndexableProject(slug);
 
   if (!project) {
     return {
@@ -48,7 +48,7 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = getPublicProject(slug);
+  const project = getIndexableProject(slug);
 
   if (!project) {
     notFound();

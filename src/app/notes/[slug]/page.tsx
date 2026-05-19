@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
-import { getPublicNote, publicNotes } from "@/data/notes";
+import { getIndexableNote, indexableNotes } from "@/data/notes";
 import { createSeoMetadata } from "@/lib/seo";
 
 type NotePageProps = {
@@ -11,14 +11,14 @@ type NotePageProps = {
 };
 
 export function generateStaticParams() {
-  return publicNotes.map((note) => ({ slug: note.slug }));
+  return indexableNotes.map((note) => ({ slug: note.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: NotePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const note = getPublicNote(slug);
+  const note = getIndexableNote(slug);
 
   if (!note) {
     return {
@@ -39,7 +39,7 @@ export async function generateMetadata({
 
 export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
-  const note = getPublicNote(slug);
+  const note = getIndexableNote(slug);
 
   if (!note) {
     notFound();
