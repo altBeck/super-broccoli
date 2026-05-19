@@ -12,7 +12,7 @@ export default function HomePage() {
         <Container className="pb-0 pt-5 md:pt-[22px]">
           <div className="max-w-[1010px]">
             <h1 className="text-[24px] font-semibold leading-normal tracking-normal text-[#242424] dark:text-foreground">
-              Product Designer
+              Product Engineer
             </h1>
             <div className="mt-[25px] max-w-[1080px] space-y-4 text-[18px] font-normal leading-normal tracking-normal text-muted md:space-y-[18px]">
               <p>

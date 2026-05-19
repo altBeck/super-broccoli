@@ -4,7 +4,11 @@ import { siteConfig } from "@/data/site";
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://bekanno.com";
 
-export const defaultOgImage = "/og/default-og.png";
+export const defaultOgImage = "/preview.png";
+export const defaultOgImageSize = {
+  width: 1586,
+  height: 992,
+};
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteUrl).toString();
@@ -24,7 +28,7 @@ export function createSeoMetadata({
   title,
   description = siteConfig.description,
   path,
-  openGraphTitle = title ?? "Beck Kanno — Product Designer",
+  openGraphTitle = title ?? siteConfig.title,
   openGraphDescription = description,
   image = defaultOgImage,
   noIndex = false,
@@ -45,8 +49,8 @@ export function createSeoMetadata({
       images: [
         {
           url: image,
-          width: 1200,
-          height: 630,
+          width: defaultOgImageSize.width,
+          height: defaultOgImageSize.height,
           alt: openGraphTitle,
         },
       ],

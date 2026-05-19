@@ -1,9 +1,9 @@
 # Open Graph Image
 
-TODO: Add `default-og.png` at 1200x630.
+The default social preview image is `public/preview.png`.
 
 The default social image should include:
 
 - Beck Kanno
-- Product Designer
+- Product Engineer • Design, Code, Ship
 - I make complex products make sense.

@@ -7,7 +7,7 @@ import { SiteBanner } from "@/components/layout/SiteBanner";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { siteConfig } from "@/data/site";
-import { defaultOgImage, siteUrl } from "@/lib/seo";
+import { defaultOgImage, defaultOgImageSize, siteUrl } from "@/lib/seo";
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -28,7 +28,7 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Beck Kanno — Product Designer",
+    default: siteConfig.title,
     template: "%s — Beck Kanno",
   },
   description: siteConfig.description,
@@ -41,6 +41,7 @@ export const metadata: Metadata = {
   publisher: "Beck Kanno",
   keywords: [
     "Beck Kanno",
+    "Product Engineer",
     "Product Designer",
     "UX Designer",
     "UX Architect",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     apple: "/icons/caesar-logo.svg",
   },
   openGraph: {
-    title: "Beck Kanno — Product Designer",
+    title: siteConfig.title,
     description: siteConfig.description,
     siteName: "Caesar",
     url: "/",
@@ -68,15 +69,15 @@ export const metadata: Metadata = {
     images: [
       {
         url: defaultOgImage,
-        width: 1200,
-        height: 630,
-        alt: "Beck Kanno — Product Designer",
+        width: defaultOgImageSize.width,
+        height: defaultOgImageSize.height,
+        alt: siteConfig.title,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beck Kanno — Product Designer",
+    title: siteConfig.title,
     description: siteConfig.description,
     images: [defaultOgImage],
   },

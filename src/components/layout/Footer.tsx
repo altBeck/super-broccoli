@@ -32,7 +32,7 @@ export function Footer() {
           </h2>
           <span className="h-px w-[126px] bg-footer-fg" aria-hidden="true" />
           <p className="font-display text-[64px] italic leading-none tracking-[-0.04em]">
-            Product Designer
+            Product Engineer
           </p>
         </div>
 
