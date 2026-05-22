@@ -73,6 +73,46 @@ button:focus-visible {
   color: #0a130c;
 }
 
+.ledger-dashed-y {
+  position: relative;
+}
+
+.ledger-dashed-y::before,
+.ledger-dashed-y::after {
+  background-image: repeating-linear-gradient(
+    to right,
+    #cecece 0,
+    #cecece 12px,
+    transparent 12px,
+    transparent 19.2px
+  );
+  content: "";
+  height: 1px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.ledger-dashed-y::before {
+  top: 0;
+}
+
+.ledger-dashed-y::after {
+  bottom: 0;
+}
+
+.dark .ledger-dashed-y::before,
+.dark .ledger-dashed-y::after {
+  background-image: repeating-linear-gradient(
+    to right,
+    #333633 0,
+    #333633 12px,
+    transparent 12px,
+    transparent 19.2px
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

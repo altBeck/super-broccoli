@@ -3,6 +3,7 @@ import { Geist_Mono, Inter_Tight, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { NavigationHistoryTracker } from "@/components/layout/NavigationHistoryTracker";
 import { SiteBanner } from "@/components/layout/SiteBanner";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { StructuredData } from "@/components/seo/StructuredData";
@@ -118,6 +119,7 @@ export default function RootLayout({
       >
         <ThemeInitScript />
         <ThemeProvider>
+          <NavigationHistoryTracker />
           <StructuredData />
           <SiteBanner banner={siteConfig.banner} />
           <div className="flex min-h-screen flex-col pt-8">

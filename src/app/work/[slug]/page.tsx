@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
+import { LedgerCaseStudy } from "@/components/work/LedgerCaseStudy";
 import { ProjectArtwork } from "@/components/work/ProjectArtwork";
 import { ProjectMeta } from "@/components/work/ProjectMeta";
 import { getIndexableProject, indexableProjects } from "@/data/projects";
@@ -52,6 +53,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!project) {
     notFound();
+  }
+
+  if (project.slug === "ledger") {
+    return <LedgerCaseStudy />;
   }
 
   return (

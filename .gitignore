@@ -28,4 +28,6 @@ pnpm-debug.log*
 
 # Local agent tooling
 .agents/
+AGENTS/
+agents/
 skills-lock.json
