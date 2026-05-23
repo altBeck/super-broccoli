@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Caesar",
   owner: "Beck Kanno",
-  title: "Beck Kanno • Product Engineer • Design, Code, Ship",
-  role: "Product Engineer",
+  title: "Beck Kanno • Product Designer • Design, Code, Ship",
+  role: "Product Designer",
   description:
     "Beck Kanno is a product designer making complex products make sense across fintech, compliance, AI tools, enterprise workflows, and build-ready product systems.",
   oneLineBio: "Product designer making complex products make sense.",

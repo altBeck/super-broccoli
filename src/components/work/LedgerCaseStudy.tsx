@@ -210,7 +210,7 @@ export function LedgerCaseStudy() {
               Ledger &bull; Ongoing 2026
             </p>
 
-            <dl className="ledger-dashed-y mt-7 grid gap-7 py-6 text-[15px] sm:grid-cols-4">
+            <dl className="mt-7 grid grid-cols-2 gap-x-7 gap-y-8 border-y border-dashed border-[#cecece] py-6 text-[15px] dark:border-[#333633] sm:grid-cols-4">
               {metadata.map((item) => (
                 <div key={item.label}>
                   <dt className="font-mono uppercase tracking-[0.08em] text-[#727272] dark:text-[#a4a4a0]">

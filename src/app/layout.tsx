@@ -47,7 +47,6 @@ export const metadata: Metadata = {
   publisher: "Beck Kanno",
   keywords: [
     "Beck Kanno",
-    "Product Engineer",
     "Product Designer",
     "UX Designer",
     "UX Architect",

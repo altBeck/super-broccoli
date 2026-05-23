@@ -32,7 +32,7 @@ export function HeaderMenu({ open, onOpenChange }: HeaderMenuProps) {
           onClick={() => onOpenChange(true)}
           aria-expanded={open}
           aria-controls="primary-menu"
-          className={`absolute right-0 text-[18px] font-semibold leading-none text-[#3c3c3c] transition duration-150 ease-out hover:-translate-y-px hover:text-foreground active:translate-y-0 dark:text-[#f1f4ee] dark:hover:text-white md:text-[16px] ${
+          className={`absolute right-0 text-[18px] font-semibold leading-none text-[#3c3c3c] transition duration-150 ease-out hover:-translate-y-px hover:text-[#0a130c] active:translate-y-0 dark:text-[#f1f4ee] dark:hover:text-white md:text-[16px] ${
             open
               ? "pointer-events-none -translate-x-5 opacity-0"
               : "translate-x-0 opacity-100"
@@ -44,7 +44,7 @@ export function HeaderMenu({ open, onOpenChange }: HeaderMenuProps) {
         <nav
           id="primary-menu"
           aria-label="Primary"
-          className={`absolute right-0 flex items-center gap-3 whitespace-nowrap text-[16px] font-semibold leading-none text-[#3c3c3c] transition duration-200 ease-out sm:gap-4 sm:text-[18px] md:gap-5 md:text-[16px] dark:text-[#f1f4ee] ${
+          className={`absolute right-0 flex items-center gap-3 whitespace-nowrap text-[16px] font-semibold leading-none text-[#3c3c3c] transition duration-200 ease-out dark:text-[#f1f4ee] sm:gap-4 sm:text-[18px] md:gap-5 md:text-[16px] ${
             open
               ? "translate-x-0 opacity-100"
               : "pointer-events-none translate-x-6 opacity-0"
@@ -55,7 +55,7 @@ export function HeaderMenu({ open, onOpenChange }: HeaderMenuProps) {
               key={link.href}
               href={link.href}
               onClick={() => onOpenChange(false)}
-              className={`transition duration-150 ease-out hover:-translate-y-px hover:text-foreground active:translate-y-0 dark:hover:text-white ${
+              className={`transition duration-150 ease-out hover:-translate-y-px hover:text-[#0a130c] active:translate-y-0 dark:hover:text-white ${
                 open
                   ? "translate-x-0 opacity-100"
                   : "translate-x-3 opacity-0"
@@ -68,7 +68,7 @@ export function HeaderMenu({ open, onOpenChange }: HeaderMenuProps) {
           <button
             type="button"
             onClick={() => onOpenChange(false)}
-            className={`transition duration-150 ease-out hover:-translate-y-px hover:text-foreground active:translate-y-0 dark:hover:text-white ${
+            className={`transition duration-150 ease-out hover:-translate-y-px hover:text-[#0a130c] active:translate-y-0 dark:hover:text-white ${
               open ? "translate-x-0 opacity-100" : "translate-x-3 opacity-0"
             }`}
             style={{

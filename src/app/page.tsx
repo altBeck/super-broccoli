@@ -1,6 +1,6 @@
 import { Container } from "@/components/layout/Container";
 import Link from "next/link";
-import { ProjectGrid } from "@/components/work/ProjectGrid";
+import { RecentProjects } from "@/components/work/RecentProjects";
 import { publicProjects } from "@/data/projects";
 
 const featuredProjects = publicProjects.filter((project) => project.featured);
@@ -12,16 +12,18 @@ export default function HomePage() {
         <Container className="pb-0 pt-5 md:pt-[22px]">
           <div className="max-w-[1010px]">
             <h1 className="text-[24px] font-semibold leading-normal tracking-normal text-[#242424] dark:text-foreground">
-              Product Engineer
+              Product Designer
             </h1>
             <div className="mt-[25px] max-w-[1080px] space-y-4 text-[18px] font-normal leading-normal tracking-normal text-muted md:space-y-[18px]">
               <p>
-                <span className="font-medium">Hey, I&apos;m Beck.</span> I make
-                complex products make sense, turning scattered ideas, workflows,
-                and edge cases into clear product systems, the kind teams can
-                actually use, build, and scale. My work sits between strategy,
-                UX architecture, and build-ready interface design, mostly across
-                fintech, compliance, AI tools, and enterprise workflows.
+                <span className="font-medium text-foreground">
+                  I design websites, apps, and product experiences for teams
+                  building complex software.
+                </span>{" "}
+                I work with teams to turn rough ideas, messy workflows, and
+                early product concepts into clear interfaces, prototypes, and
+                product systems. Most of my work sits across fintech, AI tools,
+                compliance, dashboards, and workflow-heavy products.
               </p>
               <p>
                 I&apos;m currently designing and building{" "}
@@ -44,7 +46,7 @@ export default function HomePage() {
 
       <section className="bg-surface">
         <Container className="pb-[110px] pt-[80px] md:pb-[123px] md:pt-[124px]">
-          <ProjectGrid projects={featuredProjects} />
+          <RecentProjects projects={featuredProjects} />
         </Container>
       </section>
     </>
