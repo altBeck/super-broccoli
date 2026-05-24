@@ -40,9 +40,9 @@ export const projects: Project[] = [
     role: ["Product Design", "UX Architecture", "Frontend"],
     domain: ["AI", "Analytics", "Team Workflows"],
     summary:
-      "An observability dashboard for understanding AI usage, behavior, cost, and value across teams.",
+      "An AI observability dashboard for understanding usage, behavior, cost, and value across modern AI workflows.",
     longDescription:
-      "Ledger is an AI observability dashboard for teams trying to understand how AI is being used across products, workflows, and people. It tracks usage, behavior, cost, and value so teams can make better decisions about adoption, governance, and impact.",
+      "Ledger is an active AI observability prototype for teams trying to understand how AI is being used across providers, projects, workflows, and people. It explores usage, behavior, cost, risk, and value as operational signals for adoption, governance, and workflow decisions.",
     featured: true,
     visibility: "public",
     caseStudyStatus: "stub",
