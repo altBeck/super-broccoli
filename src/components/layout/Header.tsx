@@ -9,7 +9,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-8 z-40 border-b border-[#e9e9e8] bg-[#fbfbfb] text-[#0a130c] backdrop-blur dark:border-[#263126] dark:bg-[#061108] dark:text-[#f1f4ee] dark:backdrop-blur-none">
+    <header className="site-header sticky top-8 z-40 border-b border-[#e9e9e8] bg-[#fbfbfb] text-[#0a130c] backdrop-blur dark:border-[#263126] dark:bg-[#061108] dark:text-[#f1f4ee] dark:backdrop-blur-none">
       <div
         className={`mx-auto flex h-16 w-full max-w-[1080px] items-center justify-between px-5 sm:px-8 md:gap-6 ${
           menuOpen ? "gap-0" : "gap-6"

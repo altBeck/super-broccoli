@@ -15,7 +15,7 @@ const toolIcons = [
 ];
 
 const footerLinks = [
-  { label: "Work", href: "/work" },
+  { label: "Work", href: "/#work" },
   { label: "About", href: "/about" },
   { label: "Lab", href: "/lab" },
   { label: "Contact", href: "/contact" },
@@ -23,7 +23,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-footer-bg text-footer-fg">
+    <footer className="site-footer bg-footer-bg text-footer-fg">
       <Container className="min-h-[602px] py-11 sm:py-20 md:min-h-[522px] md:py-[70px]">
         <div className="hidden items-baseline justify-center gap-10 md:flex">
           <h2 className="text-[64px] font-normal leading-none tracking-[-0.02em]">
@@ -89,6 +89,7 @@ export function Footer() {
                   alt={icon.alt}
                   width={24}
                   height={24}
+                  quality={95}
                   className="h-5 w-5 rounded-full"
                 />
               ))}

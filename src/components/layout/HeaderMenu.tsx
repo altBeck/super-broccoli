@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const menuLinks = [
-  { label: "Work", href: "/work" },
+  { label: "Work", href: "/#work" },
   { label: "About", href: "/about" },
   { label: "Lab", href: "/lab" },
   { label: "Contact", href: "/contact" },

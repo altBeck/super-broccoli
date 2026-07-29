@@ -2,20 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Raveo";
+  src: url("/fonts/raveo/RaveoVF-subsetted.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 730;
+}
+
+@font-face {
+  font-family: "Raveo Variable";
+  src: url("/fonts/raveo/RaveoVF-subsetted.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 730;
+}
+
+@font-face {
+  font-family: "Raveo Display";
+  src: url("/fonts/raveo/RaveoVF-subsetted.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 730;
+}
+
 :root {
-  --background: #ffffff;
-  --surface: #f9f9f9;
-  --foreground: #0a130c;
-  --muted: #6f746f;
-  --border: #e9e9e8;
-  --accent: #d1e2bf;
-  --banner-bg: #0a130c;
-  --banner-fg: #d1e2bf;
-  --footer-bg: #061108;
-  --footer-fg: #f1f4ee;
+  color-scheme: light;
+  --background: #fbf9ee;
+  --surface: #f2f1ed;
+  --foreground: #1e1e1e;
+  --muted: #72736f;
+  --border: #e0dede;
+  --accent: #ffbf00;
+  --banner-bg: #063b2f;
+  --banner-fg: #fbf9ee;
+  --footer-bg: #063b2f;
+  --footer-fg: #fbf9ee;
 }
 
 .dark {
+  color-scheme: dark;
   --background: #0a130c;
   --surface: #101b13;
   --foreground: #ffffff;
@@ -37,15 +63,100 @@ html {
   scroll-behavior: smooth;
 }
 
+html:has(.immersive-home) {
+  scrollbar-width: none;
+}
+
+html:has(.immersive-home)::-webkit-scrollbar {
+  display: none;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis {
+  scroll-behavior: auto;
+}
+
+html.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+html.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+html.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 body {
   min-height: 100%;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-family: "Raveo Variable", system-ui, sans-serif;
   font-synthesis: none;
   font-feature-settings: "calt" 1, "ss02" 1;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+body:has(.immersive-home),
+.dark body:has(.immersive-home) {
+  background: #fffef4;
+}
+
+.paper-surface {
+  background-color: #fffef4;
+  background-image: none;
+}
+
+body:has(.immersive-home) .site-banner,
+body:has(.immersive-home) .site-header,
+body:has(.immersive-home) .site-footer {
+  display: none;
+}
+
+body:has(.immersive-home) .site-shell {
+  padding-top: 0;
+}
+
+.viewport-shell {
+  min-height: 100dvh;
+}
+
+@supports not (height: 100dvh) {
+  .viewport-shell {
+    min-height: 100vh;
+  }
+}
+
+.immersive-page-gutter {
+  padding-inline-start: max(18px, env(safe-area-inset-left, 0px));
+  padding-inline-end: max(18px, env(safe-area-inset-right, 0px));
+}
+
+.immersive-safe-bottom {
+  padding-bottom: max(5rem, env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 640px) {
+  .immersive-page-gutter {
+    padding-inline-start: max(32px, env(safe-area-inset-left, 0px));
+    padding-inline-end: max(32px, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1440px) {
+  .immersive-safe-bottom {
+    padding-bottom: max(7rem, env(safe-area-inset-bottom, 0px));
+  }
 }
 
 h1,
@@ -82,6 +193,11 @@ button:focus-visible {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+
+  .hero-social-link:hover img,
+  .hero-social-link:focus-visible img {
+    transform: none !important;
+  }
 }
 
 @keyframes ticker {
@@ -99,4 +215,32 @@ button:focus-visible {
 
 .ticker-track:hover {
   animation-play-state: paused;
+}
+
+.raveo-variable {
+  font-family: "Raveo Variable", system-ui, sans-serif;
+}
+
+.raveo-display {
+  font-family: "Raveo Display", system-ui, sans-serif;
+}
+
+.immersive-nav-shell--pinned {
+  background-color: #fffef4;
+}
+
+.portfolio-grid {
+  grid-template-columns: repeat(
+    var(--portfolio-mobile-columns, 1),
+    minmax(0, 1fr)
+  );
+}
+
+@media (min-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(
+      var(--portfolio-columns, 4),
+      minmax(0, 1fr)
+    );
+  }
 }

@@ -1,7 +1,7 @@
 import { studioEnabled } from "@/lib/studio";
 
 export const publicNav = [
-  { label: "Work", href: "/work" },
+  { label: "Work", href: "/#work" },
   { label: "Notes", href: "/notes" },
   { label: "Now", href: "/now" },
   { label: "Lab", href: "/lab" },

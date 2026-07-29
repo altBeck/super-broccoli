@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Inter_Tight, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -14,22 +13,6 @@ import {
   defaultOgImageSize,
   siteUrl,
 } from "@/lib/seo";
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-inter-tight",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair-display",
-  style: ["italic"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -94,8 +77,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
-    { media: "(prefers-color-scheme: dark)", color: "#0A130C" },
+    { media: "(prefers-color-scheme: light)", color: "#FBF9EE" },
+    { media: "(prefers-color-scheme: dark)", color: "#080F0C" },
   ],
   colorScheme: "light dark",
 };
@@ -112,16 +95,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${interTight.variable} ${geistMono.variable} ${playfairDisplay.variable} min-h-screen antialiased`}
-      >
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body className="viewport-shell antialiased">
         <ThemeInitScript />
         <ThemeProvider>
           <NavigationHistoryTracker />
           <StructuredData />
           <SiteBanner banner={siteConfig.banner} />
-          <div className="flex min-h-screen flex-col pt-8">
+          <div className="site-shell viewport-shell flex flex-col pt-8">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />

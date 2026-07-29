@@ -22,9 +22,9 @@ const config: Config = {
         "footer-fg": "var(--footer-fg)",
       },
       fontFamily: {
-        sans: ["var(--font-inter-tight)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
-        display: ["var(--font-playfair-display)", "Georgia", "serif"],
+        sans: ["Raveo Variable", "system-ui", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+        display: ["Raveo Variable", "system-ui", "sans-serif"],
       },
       boxShadow: {
         soft: "0 24px 80px rgb(10 19 12 / 0.08)",

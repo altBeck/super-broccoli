@@ -5,11 +5,14 @@ import puplarMobileHero from "@/images/hero-img/puplar-mobile-hero.png";
 import puplarWebHero from "@/images/hero-img/puplar-web-hero.png";
 import sunDialHero from "@/images/hero-img/sun-dial-hero.png";
 
-export type ProjectVisibility = "public" | "private" | "password" | "draft";
-
-export type CaseStudyStatus = "stub" | "outline" | "draft" | "published";
-
 export type ProjectStatus = "ongoing" | "shipped" | "concept" | "archived";
+
+export type AnimatedProjectMedia = {
+  webm: string;
+  mp4: string;
+  poster: string | StaticImageData;
+  label: string;
+};
 
 export type Project = {
   title: string;
@@ -18,34 +21,33 @@ export type Project = {
   status: ProjectStatus;
   year: string;
   coverImage: string | StaticImageData;
-  coverRatio: "wide" | "dash" | "mobile";
-  role: string[];
+  heroImage?: string | StaticImageData;
+  galleryImages?: Partial<Record<number, string | StaticImageData>>;
+  galleryVideos?: Partial<Record<number, AnimatedProjectMedia>>;
   domain: string[];
   summary: string;
-  longDescription: string;
-  featured: boolean;
-  visibility: ProjectVisibility;
-  caseStudyStatus: CaseStudyStatus;
 };
 
-export const projects: Project[] = [
+export const portfolioProjects: Project[] = [
   {
     title: "Ledger",
     slug: "ledger",
-    label: "AI observability dashboard",
+    label: "AI observability, B2B SaaS",
     status: "ongoing",
     year: "2026",
     coverImage: ledgerHero,
-    coverRatio: "wide",
-    role: ["Product Design", "UX Architecture", "Frontend"],
+    heroImage: "/ledger/ledger-hero.png",
+    galleryVideos: {
+      1: {
+        webm: "/ledger/ledger-edit.webm",
+        mp4: "/ledger/ledger-edit.mp4",
+        poster: "/ledger/ledger-hero.png",
+        label: "Animated Ledger interface preview",
+      },
+    },
     domain: ["AI", "Analytics", "Team Workflows"],
     summary:
-      "An AI observability dashboard for understanding usage, behavior, cost, and value across modern AI workflows.",
-    longDescription:
-      "Ledger is an active AI observability prototype for teams trying to understand how AI is being used across providers, projects, workflows, and people. It explores usage, behavior, cost, risk, and value as operational signals for adoption, governance, and workflow decisions.",
-    featured: true,
-    visibility: "public",
-    caseStudyStatus: "stub",
+      "A dashboard that helps teams understand how AI is used, what it costs, and where it creates value.",
   },
   {
     title: "Dash",
@@ -54,16 +56,9 @@ export const projects: Project[] = [
     status: "concept",
     year: "2025",
     coverImage: dashHero,
-    coverRatio: "dash",
-    role: ["Product Design", "UX Architecture"],
     domain: ["Mobility", "B2B", "Consumer Apps"],
     summary:
       "A mobile-first mobility platform combining ride sharing, car rentals, and organisation-based commute services.",
-    longDescription:
-      "Dash is a mobile-first mobility platform for ride sharing, car rentals, and B2B commute services. The product separates personal mobility from organisation-managed commute flows, supporting riders, organisation heads, members, and drivers across a coherent mobile experience.",
-    featured: true,
-    visibility: "public",
-    caseStudyStatus: "stub",
   },
   {
     title: "sunDial",
@@ -72,16 +67,9 @@ export const projects: Project[] = [
     status: "shipped",
     year: "2026",
     coverImage: sunDialHero,
-    coverRatio: "wide",
-    role: ["Product Design", "Frontend", "Product Strategy"],
     domain: ["Desktop Apps", "Video", "Productivity"],
     summary:
       "A desktop app that helps users compress and transcribe long recordings without touching FFmpeg commands.",
-    longDescription:
-      "sunDial is a desktop video compression and transcription tool for long recordings, product demos, client feedback sessions, and internal walkthroughs. It uses intent-based presets to turn technical compression decisions into simple user choices.",
-    featured: true,
-    visibility: "public",
-    caseStudyStatus: "stub",
   },
   {
     title: "Puplar",
@@ -90,16 +78,9 @@ export const projects: Project[] = [
     status: "shipped",
     year: "2026",
     coverImage: puplarWebHero,
-    coverRatio: "wide",
-    role: ["Product Design", "Visual Design"],
     domain: ["Fintech", "Payments", "Dashboards"],
     summary:
       "A desktop financial dashboard for managing payments, accounts, virtual cards, and multi-rail finance operations.",
-    longDescription:
-      "Puplar Desktop is a redesigned fintech dashboard for managing local currency, crypto-enabled funding, international banking, virtual dollar cards, accounts, and transactions from a clearer financial command center.",
-    featured: true,
-    visibility: "public",
-    caseStudyStatus: "stub",
   },
   {
     title: "Puplar Mobile",
@@ -108,33 +89,8 @@ export const projects: Project[] = [
     status: "shipped",
     year: "2024",
     coverImage: puplarMobileHero,
-    coverRatio: "mobile",
-    role: ["Product Design", "Mobile UX"],
     domain: ["Fintech", "Crypto", "Mobile Banking"],
     summary:
       "A mobile banking and wallet experience for crypto funding, virtual dollar cards, and transaction management.",
-    longDescription:
-      "Puplar Mobile is a mobile fintech wallet for managing crypto-enabled funding, international banking, virtual dollar cards, balances, and everyday transactions from one app.",
-    featured: true,
-    visibility: "public",
-    caseStudyStatus: "stub",
   },
 ];
-
-export const publicProjects = projects.filter(
-  (project) => project.visibility === "public",
-);
-
-export function isIndexableProject(project: Project) {
-  return project.visibility === "public";
-}
-
-export const indexableProjects = projects.filter(isIndexableProject);
-
-export function getPublicProject(slug: string) {
-  return publicProjects.find((project) => project.slug === slug);
-}
-
-export function getIndexableProject(slug: string) {
-  return indexableProjects.find((project) => project.slug === slug);
-}
