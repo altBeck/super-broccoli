@@ -51,10 +51,8 @@ const icons: Record<ThemeMode, { disc: string; fg: string; path: string }> = {
   },
 };
 
-// The sun glyph reads a touch small next to the others — zoom its viewBox in.
-const iconViewBox: Partial<Record<ThemeMode, string>> = {
-  light: "8 6 36 36",
-};
+// Zoom the glyphs in slightly (uniform across modes) so they read larger.
+const ICON_VIEWBOX = "8 6 36 36";
 
 function resolveTheme(mode: ThemeMode) {
   if (mode !== "auto") return mode;
@@ -132,11 +130,7 @@ export function ThemeToggle() {
         style={{ background: icons[mode].disc, color: icons[mode].fg }}
         onClick={() => setOpen((value) => !value)}
       >
-        <svg
-          viewBox={iconViewBox[mode] ?? "4 2 44 44"}
-          aria-hidden="true"
-          focusable="false"
-        >
+        <svg viewBox={ICON_VIEWBOX} aria-hidden="true" focusable="false">
           <path d={icons[mode].path} fill="currentColor" />
         </svg>
       </button>

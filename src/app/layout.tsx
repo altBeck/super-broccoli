@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL, site } from "@/lib/site";
 import "./globals.css";
 
 const aspekta = localFont({
@@ -19,10 +23,50 @@ const specialElite = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Beck Kanno — Product Designer",
-  description:
-    "Product designer turning complex products into clear, scalable experiences through strategy, systems and craft.",
-  // favicon is provided by src/app/icon.png (the smiley)
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: site.title,
+    template: `%s — ${site.name}`,
+  },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: SITE_URL }],
+  creator: site.name,
+  keywords: [
+    "Beck Kanno",
+    "Product Designer",
+    "Design Systems",
+    "Fintech",
+    "AI",
+    "Portfolio",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    locale: site.locale,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  // favicon: src/app/icon.png (smiley). Social share image: drop a file at
+  // src/app/opengraph-image.(png|jpg) and Next wires og:image automatically.
 };
 
 export const viewport: Viewport = {
@@ -49,8 +93,13 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <JsonLd />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

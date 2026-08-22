@@ -490,7 +490,9 @@ button {
   position: absolute;
   z-index: 3;
   right: 0;
-  bottom: 0;
+  /* nudge down so the icon's centre lines up with the social-icons row
+     (icon is 64px, the row ~24px, both bottom-anchored) */
+  bottom: -20px;
   display: grid;
   width: 64px;
   height: 64px;
@@ -746,8 +748,13 @@ button {
 }
 
 .intro__accent {
-  /* the accent link stays blue across every theme */
+  /* the accent link is blue in light & dark */
   color: #3d3ddb;
+}
+
+/* Studio prefers a warm white accent over the deep-green ground */
+:root[data-theme="studio"] .intro__accent {
+  color: #eae4d8;
 }
 
 .social-links {
@@ -1247,14 +1254,7 @@ button {
   }
 
   .cutting-mat__links {
-    gap: 14px;
-  }
-
-  .cutting-mat__smile,
-  .cutting-mat__smile span,
-  .cutting-mat__smile img {
-    width: 46px;
-    height: 46px;
+    gap: 31px;
   }
 
   .hero-label__grid {
@@ -1352,7 +1352,7 @@ button {
 
 @media (max-width: 390px) {
   .cutting-mat__links {
-    gap: 10px;
+    gap: 22px;
   }
 
   .hero-label__grid {
