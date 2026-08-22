@@ -5,92 +5,89 @@ import puplarMobileHero from "@/images/hero-img/puplar-mobile-hero.png";
 import puplarWebHero from "@/images/hero-img/puplar-web-hero.png";
 import sunDialHero from "@/images/hero-img/sun-dial-hero.png";
 
-export type ProjectStatus = "ongoing" | "shipped" | "concept" | "archived";
+export type ProjectTagIcon =
+  | "product"
+  | "design-system"
+  | "web"
+  | "mobile";
 
-export type AnimatedProjectMedia = {
-  webm: string;
-  mp4: string;
-  poster: string | StaticImageData;
+export type ProjectTag = {
   label: string;
+  icon: ProjectTagIcon;
 };
+
+export type GalleryItem = StaticImageData | string;
 
 export type Project = {
   title: string;
   slug: string;
-  label: string;
-  status: ProjectStatus;
-  year: string;
-  coverImage: string | StaticImageData;
-  heroImage?: string | StaticImageData;
-  galleryImages?: Partial<Record<number, string | StaticImageData>>;
-  galleryVideos?: Partial<Record<number, AnimatedProjectMedia>>;
-  domain: string[];
+  meta: string;
   summary: string;
+  tags: ProjectTag[];
+  gallery: GalleryItem[];
 };
 
 export const portfolioProjects: Project[] = [
   {
     title: "Ledger",
     slug: "ledger",
-    label: "AI observability, B2B SaaS",
-    status: "ongoing",
-    year: "2026",
-    coverImage: ledgerHero,
-    heroImage: "/ledger/ledger-hero.png",
-    galleryVideos: {
-      1: {
-        webm: "/ledger/ledger-edit.webm",
-        mp4: "/ledger/ledger-edit.mp4",
-        poster: "/ledger/ledger-hero.png",
-        label: "Animated Ledger interface preview",
-      },
-    },
-    domain: ["AI", "Analytics", "Team Workflows"],
+    meta: "AI observability, B2B SaaS, 2026",
     summary:
       "A dashboard that helps teams understand how AI is used, what it costs, and where it creates value.",
+    tags: [
+      { label: "Product", icon: "product" },
+      { label: "Design System", icon: "design-system" },
+      { label: "Web", icon: "web" },
+    ],
+    gallery: [ledgerHero, "/ledger/ledger-edit.gif", ledgerHero, ledgerHero],
   },
   {
     title: "Dash",
     slug: "dash",
-    label: "B2B commute, mobility platform",
-    status: "concept",
-    year: "2025",
-    coverImage: dashHero,
-    domain: ["Mobility", "B2B", "Consumer Apps"],
+    meta: "B2B commute, mobility platform, 2025",
     summary:
       "A mobile-first mobility platform combining ride sharing, car rentals, and organisation-based commute services.",
+    tags: [
+      { label: "Product", icon: "product" },
+      { label: "Mobile", icon: "mobile" },
+    ],
+    gallery: [dashHero],
   },
   {
     title: "sunDial",
     slug: "sundial",
-    label: "Intent-based video compression tool",
-    status: "shipped",
-    year: "2026",
-    coverImage: sunDialHero,
-    domain: ["Desktop Apps", "Video", "Productivity"],
+    meta: "Intent-based video compression tool, 2026",
     summary:
       "A desktop app that helps users compress and transcribe long recordings without touching FFmpeg commands.",
+    tags: [
+      { label: "Product", icon: "product" },
+      { label: "Web", icon: "web" },
+    ],
+    gallery: [sunDialHero],
   },
   {
     title: "Puplar",
     slug: "puplar-dashboard",
-    label: "Multi-rail finance dashboard",
-    status: "shipped",
-    year: "2026",
-    coverImage: puplarWebHero,
-    domain: ["Fintech", "Payments", "Dashboards"],
+    meta: "Multi-rail finance dashboard, 2026",
     summary:
       "A desktop financial dashboard for managing payments, accounts, virtual cards, and multi-rail finance operations.",
+    tags: [
+      { label: "Product", icon: "product" },
+      { label: "Design System", icon: "design-system" },
+      { label: "Web", icon: "web" },
+    ],
+    gallery: [puplarWebHero],
   },
   {
     title: "Puplar Mobile",
     slug: "puplar-mobile",
-    label: "Crypto-enabled mobile banking app",
-    status: "shipped",
-    year: "2024",
-    coverImage: puplarMobileHero,
-    domain: ["Fintech", "Crypto", "Mobile Banking"],
+    meta: "Crypto-enabled mobile banking app, 2024",
     summary:
       "A mobile banking and wallet experience for crypto funding, virtual dollar cards, and transaction management.",
+    tags: [
+      { label: "Product", icon: "product" },
+      { label: "Mobile", icon: "mobile" },
+    ],
+    gallery: [puplarMobileHero],
   },
 ];
