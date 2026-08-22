@@ -6,9 +6,18 @@
  * https://beckkanno.com) once the domain exists. Everything else — canonical
  * tags, Open Graph URLs, the sitemap, robots — derives from it.
  */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-).replace(/\/+$/, "");
+function resolveSiteUrl() {
+  // 1. explicit override — set this once you have a custom domain
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  // 2. Vercel's production domain (auto-injected on Vercel builds)
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  // 3. local dev
+  return "http://localhost:3000";
+}
+
+export const SITE_URL = resolveSiteUrl().replace(/\/+$/, "");
 
 export const site = {
   name: "Beck Kanno",
