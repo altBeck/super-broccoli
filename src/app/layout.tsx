@@ -67,6 +67,7 @@ export const metadata: Metadata = {
   },
   // favicon: src/app/icon.png (smiley). Social share image: drop a file at
   // src/app/opengraph-image.(png|jpg) and Next wires og:image automatically.
+  // Canonical/OG URL resolves from SITE_URL (or the Vercel prod domain).
 };
 
 export const viewport: Viewport = {
@@ -76,7 +77,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const themeScript = `(function(){try{var p=localStorage.getItem('theme')||'auto';var r=p;if(p==='auto'){r=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}var d=document.documentElement;d.setAttribute('data-theme',r);d.setAttribute('data-theme-pref',p);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
+// Default theme is Light. (Auto/system is disabled for now — re-enable by
+// restoring the prefers-color-scheme branch here and the "auto" option.)
+const themeScript = `(function(){try{var p=localStorage.getItem('theme');if(p!=='light'&&p!=='dark'&&p!=='studio')p='light';var d=document.documentElement;d.setAttribute('data-theme',p);d.setAttribute('data-theme-pref',p);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
 export default function RootLayout({
   children,
@@ -88,7 +91,7 @@ export default function RootLayout({
       lang="en"
       className={`${aspekta.variable} ${specialElite.variable}`}
       data-theme="light"
-      data-theme-pref="auto"
+      data-theme-pref="light"
       suppressHydrationWarning
     >
       <head>

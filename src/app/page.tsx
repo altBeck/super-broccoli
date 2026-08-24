@@ -4,6 +4,7 @@ import { Intro } from "@/components/home/Intro";
 import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { SurfaceTexture } from "@/components/home/SurfaceTexture";
 import { SelectedWork } from "@/components/work/SelectedWork";
+import { About } from "@/components/about/About";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
         <div className="content-shell">
           <Intro />
           <SelectedWork />
+          <About />
         </div>
       </main>
     </SurfaceTexture>

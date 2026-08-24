@@ -6,12 +6,14 @@ import { cn } from "@/lib/cn";
 type ThemeMode = "auto" | "light" | "dark" | "studio";
 
 const THEME_EVENT = "themepreferencechange";
-const MODES: ThemeMode[] = ["auto", "light", "dark", "studio"];
+// "auto" temporarily disabled — Light is the default. Add "auto" back here
+// (and to `options` + the layout no-flash script) to re-enable system mode.
+const MODES: ThemeMode[] = [/* "auto", */ "light", "dark", "studio"];
 
 function readMode(): ThemeMode {
-  if (typeof document === "undefined") return "auto";
+  if (typeof document === "undefined") return "light";
   const pref = document.documentElement.getAttribute("data-theme-pref");
-  return MODES.includes(pref as ThemeMode) ? (pref as ThemeMode) : "auto";
+  return MODES.includes(pref as ThemeMode) ? (pref as ThemeMode) : "light";
 }
 
 function subscribeMode(callback: () => void) {
@@ -20,7 +22,7 @@ function subscribeMode(callback: () => void) {
 }
 
 const options: Array<{ mode: ThemeMode; label: string }> = [
-  { mode: "auto", label: "Auto" },
+  // { mode: "auto", label: "Auto" }, // disabled for now — Light is the default
   { mode: "light", label: "Light" },
   { mode: "dark", label: "Dark" },
   { mode: "studio", label: "Studio" },
@@ -73,11 +75,11 @@ function applyTheme(mode: ThemeMode) {
 
 export function ThemeToggle() {
   // read the preference the no-flash script put on <html> — SSR-safe, no
-  // hydration mismatch (server + first client render use "auto", then sync).
+  // hydration mismatch (server + first client render use "light", then sync).
   const mode = useSyncExternalStore<ThemeMode>(
     subscribeMode,
     readMode,
-    () => "auto",
+    () => "light",
   );
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -92,15 +94,8 @@ export function ThemeToggle() {
     window.dispatchEvent(new Event(THEME_EVENT));
   };
 
-  // keep "auto" in sync with the OS preference while it's selected
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const handle = () => {
-      if (readMode() === "auto") applyTheme("auto");
-    };
-    mq.addEventListener("change", handle);
-    return () => mq.removeEventListener("change", handle);
-  }, []);
+  // Auto disabled for now, so no OS-preference listener is needed. Re-add a
+  // matchMedia("(prefers-color-scheme: dark)") listener here to support "auto".
 
   // close on outside click / Escape
   useEffect(() => {

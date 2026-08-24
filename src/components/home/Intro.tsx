@@ -1,5 +1,10 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { useState } from "react";
 import { Smiley } from "./Smiley";
+
+const EMAIL = "drkannobeck@gmail.com";
 
 const githubIcon = (
   <path
@@ -35,20 +40,35 @@ const socialLinks: Array<{
     tooltip: "GitHub",
   },
   {
-    href: "https://www.linkedin.com/",
+    href: "https://linkedin.com/in/kanno-beck",
     icon: linkedinIcon,
     label: "LinkedIn",
     tooltip: "LinkedIn",
   },
-  {
-    href: "mailto:drkannobeck@gmail.com",
-    icon: mailIcon,
-    label: "Email Beck",
-    tooltip: "Email",
-  },
 ];
 
 export function Intro() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch {
+      // Fallback for browsers without the async clipboard API.
+      const input = document.createElement("textarea");
+      input.value = EMAIL;
+      input.style.position = "fixed";
+      input.style.opacity = "0";
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+    }
+
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section className="intro" id="about" aria-label="About Beck">
       <Smiley />
@@ -100,6 +120,32 @@ export function Intro() {
             </a>
           );
         })}
+
+        <button
+          type="button"
+          className="social-links__item"
+          onClick={handleCopyEmail}
+          aria-label={copied ? "Email address copied" : "Copy email address"}
+          aria-describedby="social-tooltip-email"
+        >
+          <svg
+            className="social-links__icon"
+            viewBox="0 0 24 24"
+            width={24}
+            height={24}
+            aria-hidden="true"
+            focusable="false"
+          >
+            {mailIcon}
+          </svg>
+          <span
+            id="social-tooltip-email"
+            className="social-links__tooltip"
+            role="tooltip"
+          >
+            {copied ? "Copied!" : "Copy Email"}
+          </span>
+        </button>
       </div>
     </section>
   );
