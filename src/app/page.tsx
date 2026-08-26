@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/home/SmoothScroll";
 import { SurfaceTexture } from "@/components/home/SurfaceTexture";
 import { SelectedWork } from "@/components/work/SelectedWork";
 import { About } from "@/components/about/About";
+import { SiteFooter } from "@/components/footer/SiteFooter";
 
 export default function HomePage() {
   return (
@@ -23,6 +24,7 @@ export default function HomePage() {
           <About />
         </div>
       </main>
+      <SiteFooter />
     </SurfaceTexture>
   );
 }

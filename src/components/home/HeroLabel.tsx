@@ -1,17 +1,9 @@
-"use client";
-
 import Image from "next/image";
-import { animate, useMotionValue, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-import { IndustrialShapeSwitch } from "./IndustrialShapeSwitch";
-import { cn } from "@/lib/cn";
+import { HeroShapeControl } from "./HeroShapeControl";
+import { LiveTime } from "./LiveTime";
 
 const labelCopy =
   "WORKS BEST ON COMPLEX PRODUCTS, MESSY WORKFLOWS, AND SYSTEMS WITH TOO MANY EDGE CASES. THINK IN SYSTEMS. DESIGN WITH INTENT. BUILD CLOSE TO ENGINEERING. BEST RESULTS OCCUR WHEN THE PROBLEM IS HARD, THE RULES ARE UNCLEAR, AND THE INTERFACE STILL NEEDS TO FEEL OBVIOUS. MAY CONTAIN FINTECH, AI, OPERATIONAL SOFTWARE, AND AN UNREASONABLE NUMBER OF STATES.";
-
-// Displacement travel of the WAV state, copied from the Figma export
-// (Frame 3 → feDisplacementMap scale="16"). STR is scale 0 (Frame 3-1, no map).
-const WAV_SCALE = 16;
 
 // Monotone grain, copied verbatim from the Figma "noise" effect (black 4%,
 // ~50% density via a discrete alpha ramp of 51 ones then 49 zeros).
@@ -47,26 +39,7 @@ function Barcode() {
   );
 }
 
-function formatLocalTime() {
-  // The visitor's own local time (their timezone is used automatically), in the
-  // label's 12-hour "05:42 PM" format.
-  return new Intl.DateTimeFormat("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  }).format(new Date());
-}
-
 function SystemMetadata() {
-  const [time, setTime] = useState("05:42 PM");
-
-  useEffect(() => {
-    const update = () => setTime(formatLocalTime());
-    update();
-    const id = window.setInterval(update, 15_000);
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
     <div className="system-metadata">
       <Barcode />
@@ -96,7 +69,7 @@ function SystemMetadata() {
         >
           <circle cx="6" cy="6" r="6" fill="currentColor" />
         </svg>
-        <time suppressHydrationWarning>{time}</time>
+        <LiveTime />
         <svg
           className="system-metadata__bracket system-metadata__bracket--end"
           viewBox="0 0 5 14"
@@ -112,32 +85,8 @@ function SystemMetadata() {
 }
 
 export function HeroLabel() {
-  const [isWavy, setIsWavy] = useState(true);
-  const reduceMotion = useReducedMotion();
-
-  // The whole strip (orange field + every child) is routed through ONE Figma
-  // filter, exactly like the export: a low-frequency displacement warps the
-  // edges AND the copy AND the switch together, then a fine grain is laid over
-  // the top. STR = displacement scale 0; WAV = scale 16.
-  const scale = useMotionValue(isWavy ? WAV_SCALE : 0);
-  const displaceRef = useRef<SVGFEDisplacementMapElement>(null);
-
-  useEffect(() => {
-    return scale.on("change", (value) => {
-      displaceRef.current?.setAttribute("scale", value.toFixed(2));
-    });
-  }, [scale]);
-
-  useEffect(() => {
-    const controls = animate(scale, isWavy ? WAV_SCALE : 0, {
-      duration: reduceMotion ? 0 : 0.32,
-      ease: [0.22, 1, 0.36, 1],
-    });
-    return () => controls.stop();
-  }, [isWavy, reduceMotion, scale]);
-
   return (
-    <div className={cn("hero-label", isWavy && "hero-label--wavy")}>
+    <div className="hero-label">
       <svg className="hero-label__defs" aria-hidden="true" focusable="false">
         <defs>
           <filter
@@ -158,10 +107,10 @@ export function HeroLabel() {
               result="warpNoise"
             />
             <feDisplacementMap
-              ref={displaceRef}
+              id="hero-strip-displacement"
               in="SourceGraphic"
               in2="warpNoise"
-              scale={isWavy ? WAV_SCALE : 0}
+              scale={16}
               xChannelSelector="R"
               yChannelSelector="G"
               result="displaced"
@@ -225,7 +174,7 @@ export function HeroLabel() {
 
           <div className="hero-label__identity">
             <p>BECK©2026</p>
-            <IndustrialShapeSwitch checked={isWavy} onChange={setIsWavy} />
+            <HeroShapeControl />
           </div>
 
           <h1 className="hero-label__title">Product Designer</h1>

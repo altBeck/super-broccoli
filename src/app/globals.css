@@ -481,20 +481,33 @@ button {
 }
 
 .cutting-mat__links a,
+.cutting-mat__links button,
 .cutting-mat__brand {
   border-radius: 2px;
   outline: none;
+}
+
+.cutting-mat__gallery-link {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
 
 .cutting-mat__links a {
   transition: color 160ms ease;
 }
 
-.cutting-mat__links a:hover {
+.cutting-mat__links a:hover,
+.cutting-mat__links button:hover {
   color: var(--accent-yellow);
 }
 
 .cutting-mat__links a:focus-visible,
+.cutting-mat__links button:focus-visible,
 .cutting-mat__brand:focus-visible,
 .cutting-mat__smile:focus-visible {
   outline: 2px solid var(--accent-yellow);
@@ -937,7 +950,8 @@ button {
   outline-offset: 2px;
 }
 
-.social-links__tooltip {
+.social-links__tooltip,
+.cutting-mat__tooltip {
   position: absolute;
   bottom: calc(100% + 10px);
   left: 50%;
@@ -960,12 +974,29 @@ button {
   pointer-events: none;
 }
 
+.cutting-mat__tooltip {
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: calc(100% + 10px);
+  border: 0;
+  background: #fff;
+  color: #0a0a0a;
+  transform: translate(-4px, -50%);
+}
+
 .social-links__item:hover .social-links__tooltip,
 .social-links__item:focus-visible .social-links__tooltip,
 .about__email-link:hover .social-links__tooltip,
 .about__email-link:focus-visible .social-links__tooltip {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+.cutting-mat__gallery-link:hover .cutting-mat__tooltip,
+.cutting-mat__gallery-link:focus-visible .cutting-mat__tooltip {
+  opacity: 1;
+  transform: translate(0, -50%);
 }
 
 .selected-work {

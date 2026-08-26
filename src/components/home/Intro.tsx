@@ -1,10 +1,6 @@
-"use client";
-
 import type { ReactNode } from "react";
-import { useState } from "react";
+import { CopyEmailButton } from "@/components/CopyEmailButton";
 import { Smiley } from "./Smiley";
-
-const EMAIL = "drkannobeck@gmail.com";
 
 const githubIcon = (
   <path
@@ -48,27 +44,6 @@ const socialLinks: Array<{
 ];
 
 export function Intro() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-    } catch {
-      // Fallback for browsers without the async clipboard API.
-      const input = document.createElement("textarea");
-      input.value = EMAIL;
-      input.style.position = "fixed";
-      input.style.opacity = "0";
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand("copy");
-      document.body.removeChild(input);
-    }
-
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <section className="intro" id="about" aria-label="About Beck">
       <Smiley />
@@ -121,12 +96,9 @@ export function Intro() {
           );
         })}
 
-        <button
-          type="button"
+        <CopyEmailButton
           className="social-links__item"
-          onClick={handleCopyEmail}
-          aria-label={copied ? "Email address copied" : "Copy email address"}
-          aria-describedby="social-tooltip-email"
+          tooltipId="social-tooltip-email"
         >
           <svg
             className="social-links__icon"
@@ -138,14 +110,7 @@ export function Intro() {
           >
             {mailIcon}
           </svg>
-          <span
-            id="social-tooltip-email"
-            className="social-links__tooltip"
-            role="tooltip"
-          >
-            {copied ? "Copied!" : "Copy Email"}
-          </span>
-        </button>
+        </CopyEmailButton>
       </div>
     </section>
   );

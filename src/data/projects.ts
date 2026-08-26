@@ -29,6 +29,31 @@ export type Project = {
 
 export const portfolioProjects: Project[] = [
   {
+    title: "Puplar",
+    slug: "puplar-dashboard",
+    meta: "Multi-rail finance dashboard, 2026",
+    summary:
+      "A desktop financial dashboard for managing payments, accounts, virtual cards, and multi-rail finance operations.",
+    tags: [
+      { label: "Product", icon: "product" },
+      { label: "Design System", icon: "design-system" },
+      { label: "Web", icon: "web" },
+    ],
+    gallery: [puplarWebHero],
+  },
+  {
+    title: "Puplar Mobile",
+    slug: "puplar-mobile",
+    meta: "Crypto-enabled mobile banking app, 2024",
+    summary:
+      "A mobile banking and wallet experience for crypto funding, virtual dollar cards, and transaction management.",
+    tags: [
+      { label: "Product", icon: "product" },
+      { label: "Mobile", icon: "mobile" },
+    ],
+    gallery: [puplarMobileHero],
+  },
+  {
     title: "Ledger",
     slug: "ledger",
     meta: "AI observability, B2B SaaS, 2026",
@@ -64,30 +89,5 @@ export const portfolioProjects: Project[] = [
       { label: "Web", icon: "web" },
     ],
     gallery: [sunDialHero],
-  },
-  {
-    title: "Puplar",
-    slug: "puplar-dashboard",
-    meta: "Multi-rail finance dashboard, 2026",
-    summary:
-      "A desktop financial dashboard for managing payments, accounts, virtual cards, and multi-rail finance operations.",
-    tags: [
-      { label: "Product", icon: "product" },
-      { label: "Design System", icon: "design-system" },
-      { label: "Web", icon: "web" },
-    ],
-    gallery: [puplarWebHero],
-  },
-  {
-    title: "Puplar Mobile",
-    slug: "puplar-mobile",
-    meta: "Crypto-enabled mobile banking app, 2024",
-    summary:
-      "A mobile banking and wallet experience for crypto funding, virtual dollar cards, and transaction management.",
-    tags: [
-      { label: "Product", icon: "product" },
-      { label: "Mobile", icon: "mobile" },
-    ],
-    gallery: [puplarMobileHero],
   },
 ];

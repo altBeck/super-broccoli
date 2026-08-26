@@ -79,6 +79,11 @@ export function DitheredImage({
   const progressRef = useRef(0);
   const targetRef = useRef(0);
 
+  const [shouldLoad, setShouldLoad] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      !("IntersectionObserver" in window),
+  );
   const [ready, setReady] = useState(false);
 
   /** Paint one frame at the given 0..1 progress along the rest→hover ramp. */
@@ -209,8 +214,32 @@ export function DitheredImage({
     [duration, paint],
   );
 
-  // Load the image once.
+  // Wait until the portrait is approaching the viewport before downloading it.
   useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+
+    if (!("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        setShouldLoad(true);
+        observer.disconnect();
+      },
+      { rootMargin: "240px 0px" },
+    );
+
+    observer.observe(wrap);
+    return () => observer.disconnect();
+  }, []);
+
+  // Load the image once it is near the viewport.
+  useEffect(() => {
+    if (!shouldLoad) return;
+
     const img = new Image();
     img.decoding = "async";
     img.src = src;
@@ -222,16 +251,16 @@ export function DitheredImage({
     if (img.complete && img.naturalWidth > 0) onLoad();
     else img.addEventListener("load", onLoad);
     return () => img.removeEventListener("load", onLoad);
-  }, [src, resize]);
+  }, [shouldLoad, src, resize]);
 
   // Track element size.
   useEffect(() => {
     const wrap = wrapRef.current;
-    if (!wrap) return;
+    if (!wrap || !shouldLoad) return;
     const ro = new ResizeObserver(() => resize());
     ro.observe(wrap);
     return () => ro.disconnect();
-  }, [resize]);
+  }, [resize, shouldLoad]);
 
   useEffect(() => {
     return () => {

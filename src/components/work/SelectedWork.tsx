@@ -11,11 +11,10 @@ export function SelectedWork() {
       <h2 id="selected-work-title">Selected Work</h2>
 
       <div className="project-list">
-        {portfolioProjects.map((project, index) => (
+        {portfolioProjects.map((project) => (
           <ProjectBlock
             key={project.slug}
             project={project}
-            aboveTheFold={index === 0}
           />
         ))}
       </div>

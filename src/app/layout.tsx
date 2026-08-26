@@ -18,6 +18,16 @@ const specialElite = localFont({
   src: "../../public/fonts/special-elite/SpecialElite-Regular.ttf",
   variable: "--font-special-elite",
   display: "swap",
+  preload: false,
+  style: "normal",
+  weight: "400",
+});
+
+const bebasNeue = localFont({
+  src: "../../public/fonts/bebas-neue/BebasNeue-Regular.woff2",
+  variable: "--font-bebas",
+  display: "swap",
+  preload: false,
   style: "normal",
   weight: "400",
 });
@@ -89,7 +99,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${aspekta.variable} ${specialElite.variable}`}
+      className={`${aspekta.variable} ${specialElite.variable} ${bebasNeue.variable}`}
       data-theme="light"
       data-theme-pref="light"
       suppressHydrationWarning

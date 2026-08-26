@@ -23,7 +23,7 @@ export function Smiley() {
           ease: [0.22, 1, 0.36, 1],
         }}
       >
-        <Image src={smile} alt="" priority sizes="64px" />
+        <Image src={smile} alt="" sizes="64px" />
       </motion.span>
     </button>
   );

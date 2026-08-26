@@ -1,12 +1,9 @@
-"use client";
-
-import { useState } from "react";
+import { CopyEmailButton } from "@/components/CopyEmailButton";
 import { DitheredImage } from "./DitheredImage";
 
 const GITHUB = "https://github.com/altBeck";
 const LINKEDIN = "https://linkedin.com/in/kanno-beck";
-const EMAIL = "drkannobeck@gmail.com";
-const RESUME = "/resume.pdf";
+const RESUME = "https://drive.google.com/file/d/1aHxPLyLBoWj1fThDj4QyoNZ93nR00pbh/view?usp=sharing";
 
 /** Paint-brush glyph for the "Open to Work" status (currentColor so it themes). */
 const BrushIcon = () => (
@@ -29,26 +26,6 @@ const FileIcon = () => (
 );
 
 export function About() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-    } catch {
-      const input = document.createElement("textarea");
-      input.value = EMAIL;
-      input.style.position = "fixed";
-      input.style.opacity = "0";
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand("copy");
-      document.body.removeChild(input);
-    }
-
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <section className="about" id="about-me" aria-labelledby="about-title">
       <h2 className="about__title" id="about-title">
@@ -66,7 +43,7 @@ export function About() {
 
         <div className="about__portrait">
           <DitheredImage
-            src="/media/portrait.png"
+            src="/media/portrait.webp"
             alt="Portrait of Beck Kanno"
             rest={{ cell: 7, levels: 3 }}
             hover={{ cell: 2, levels: 8 }}
@@ -119,22 +96,12 @@ export function About() {
               LinkedIn
             </a>
             , or reach me by{" "}
-            <button
-              type="button"
+            <CopyEmailButton
               className="about__link about__email-link"
-              onClick={handleCopyEmail}
-              aria-label={copied ? "Email address copied" : "Copy email address"}
-              aria-describedby="about-email-tooltip"
+              tooltipId="about-email-tooltip"
             >
               email
-              <span
-                id="about-email-tooltip"
-                className="social-links__tooltip"
-                role="tooltip"
-              >
-                {copied ? "Copied!" : "Copy Email"}
-              </span>
-            </button>
+            </CopyEmailButton>
             .
           </p>
 
