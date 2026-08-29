@@ -13,7 +13,7 @@ import {
 
 const layoutOptions: Array<{ cells: number; label: string; mode: LayoutMode }> = [
   { cells: 2, label: "Use wide two-column layout", mode: "spread" },
-  { cells: 4, label: "Use square grid layout", mode: "grid" },
+  // { cells: 4, label: "Use square grid layout", mode: "grid" },
   { cells: 9, label: "Use compact grid layout", mode: "compact" },
 ];
 

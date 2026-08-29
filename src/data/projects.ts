@@ -2,8 +2,15 @@ import type { StaticImageData } from "next/image";
 import dashHero from "@/images/hero-img/dash-hero.png";
 import ledgerHero from "@/images/hero-img/ledger-hero.png";
 import puplarMobileHero from "@/images/hero-img/puplar-mobile-hero.png";
-import puplarWebHero from "@/images/hero-img/puplar-web-hero.png";
+// import puplarWebHero from "@/images/hero-img/puplar-web-hero.png";
 import sunDialHero from "@/images/hero-img/sun-dial-hero.png";
+import dashProjectImage from "@/images/projects/dash/dash-01.png";
+import puplarDesktop01 from "@/images/projects/puplar-desktop/puplar-desktop-01.png";
+import puplarDesktop02 from "@/images/projects/puplar-desktop/puplar-desktop-02.png";
+// import puplarDesktop03 from "@/images/projects/puplar-desktop/puplar-desktop-03.png";
+// import puplarDesktop04 from "@/images/projects/puplar-desktop/puplar-desktop-04.png";
+import puplarDesktop05 from "@/images/projects/puplar-desktop/puplar-desktop-05.png";
+import puplarDesktop06 from "@/images/projects/puplar-desktop/puplar-desktop-06.png";
 
 export type ProjectTagIcon =
   | "product"
@@ -16,6 +23,11 @@ export type ProjectTag = {
   icon: ProjectTagIcon;
 };
 
+export type ProjectLink = {
+  href: string;
+  label: string;
+};
+
 export type GalleryItem = StaticImageData | string;
 
 export type Project = {
@@ -24,6 +36,7 @@ export type Project = {
   meta: string;
   summary: string;
   tags: ProjectTag[];
+  links?: ProjectLink[];
   gallery: GalleryItem[];
 };
 
@@ -39,7 +52,16 @@ export const portfolioProjects: Project[] = [
       { label: "Design System", icon: "design-system" },
       { label: "Web", icon: "web" },
     ],
-    gallery: [puplarWebHero],
+    links: [{ href: "https://puplar.com", label: "View live site" }],
+    gallery: [
+      puplarDesktop01,
+      puplarDesktop02,
+      // puplarDesktop03,
+      // puplarDesktop04,
+      puplarDesktop06,
+      puplarDesktop05,
+      // puplarWebHero,
+    ],
   },
   {
     title: "Puplar Mobile",
@@ -50,6 +72,16 @@ export const portfolioProjects: Project[] = [
     tags: [
       { label: "Product", icon: "product" },
       { label: "Mobile", icon: "mobile" },
+    ],
+    links: [
+      {
+        href: "https://apps.apple.com/us/app/usepuplar/id6451193227",
+        label: "App Store",
+      },
+      {
+        href: "https://play.google.com/store/apps/details?id=com.a.puplar&pcampaignid=web_share",
+        label: "Google Play",
+      },
     ],
     gallery: [puplarMobileHero],
   },
@@ -64,6 +96,7 @@ export const portfolioProjects: Project[] = [
       { label: "Design System", icon: "design-system" },
       { label: "Web", icon: "web" },
     ],
+    links: [{ href: "https://example.com/ledger", label: "View live site" }],
     gallery: [ledgerHero, "/ledger/ledger-edit.gif", ledgerHero, ledgerHero],
   },
   {
@@ -76,7 +109,8 @@ export const portfolioProjects: Project[] = [
       { label: "Product", icon: "product" },
       { label: "Mobile", icon: "mobile" },
     ],
-    gallery: [dashHero],
+    links: [{ href: "https://example.com/dash", label: "View live site" }],
+    gallery: [dashProjectImage, dashHero],
   },
   {
     title: "sunDial",
@@ -88,6 +122,7 @@ export const portfolioProjects: Project[] = [
       { label: "Product", icon: "product" },
       { label: "Web", icon: "web" },
     ],
+    links: [{ href: "https://example.com/sundial", label: "View live site" }],
     gallery: [sunDialHero],
   },
 ];
