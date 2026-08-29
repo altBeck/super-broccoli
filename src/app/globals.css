@@ -2011,15 +2011,16 @@ button {
     text-align: left;
   }
 
-  /* Match the desktop wordmark treatment: oversized, fixed-height, and allowed
-     to bleed beyond the footer edges. */
+  /* Keep the full name in-frame, then crop it through the letterforms just as
+     the desktop footer does. The mobile wordmark needs its own measured scale:
+     inheriting the desktop minimum size clips the final "O" sideways. */
   .site-footer__wordmark {
     margin-top: clamp(20px, 2vw, 28px);
-    height: clamp(72px, 6.94vw, 280px);
+    height: 6vw;
   }
 
   .site-footer__wordmark span {
-    font-size: clamp(72px, 16vw, 640px);
+    font-size: 14vw;
   }
 }
 
