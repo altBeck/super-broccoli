@@ -26,10 +26,10 @@ export const site = {
   role: "Product Designer",
   title: "Beck Kanno — Product Designer",
   description:
-    "Lead Product Designer at Breeze, turning complex products into clear, scalable experiences through strategy, systems and craft.",
+    "Lead Product Designer at Bridge, turning complex products into clear, scalable experiences through strategy, systems and craft.",
   locale: "en_US",
   email: "drkannobeck@gmail.com",
-  employer: { name: "Breeze", url: "https://breeze.africa" },
+  employer: { name: "Bridge", url: "https://bridgenetwork.trade" },
   socials: {
     github: "https://github.com/altBeck",
     linkedin: "https://www.linkedin.com/",

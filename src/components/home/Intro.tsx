@@ -52,11 +52,11 @@ export function Intro() {
         Lead Product Designer at{" "}
         <a
           className="intro__accent"
-          href="https://breeze.africa"
+          href="https://bridgenetwork.trade"
           target="_blank"
           rel="noreferrer"
         >
-          Breeze
+          Bridge
         </a>
         , who enjoys turning complex products into clear, scalable experiences
         through strategy, systems &amp; craft.

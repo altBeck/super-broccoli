@@ -57,7 +57,7 @@ export function About() {
             dense workflows and business rules into clear, scalable experiences.
           </p>
           <p className="about__copy">
-            Currently, I&rsquo;m a Lead Product Designer at Breeze, working
+            Currently, I&rsquo;m a Lead Product Designer at Bridge, working
             across trade, finance, compliance, and enterprise workflows &mdash;
             from early product thinking through interaction design, systems, and
             build-ready interfaces.
