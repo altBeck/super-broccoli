@@ -97,7 +97,7 @@ export const portfolioProjects: Project[] = [
       { label: "Web", icon: "web" },
     ],
     links: [{ href: "https://example.com/ledger", label: "View live site" }],
-    gallery: [ledgerHero, "/ledger/ledger-edit.gif", ledgerHero, ledgerHero],
+    gallery: [ledgerHero, "/ledger/ledger-edit.gif"],
   },
   {
     title: "Dash",
