@@ -4,6 +4,11 @@ import ledgerHero from "@/images/hero-img/ledger-hero.png";
 import puplarMobileHero from "@/images/hero-img/puplar-mobile-hero.png";
 // import puplarWebHero from "@/images/hero-img/puplar-web-hero.png";
 import sunDialHero from "@/images/hero-img/sun-dial-hero.png";
+import sunDialLibraryEmpty from "@/images/projects/sundial/library-empty.png";
+import sunDialLibraryFull from "@/images/projects/sundial/library-full.png";
+import sunDialOptimizing from "@/images/projects/sundial/optimizing.png";
+import sunDialSetting from "@/images/projects/sundial/setting.png";
+import sunDialTranscript from "@/images/projects/sundial/transcript.png";
 import dashProjectImage from "@/images/projects/dash/dash-01.png";
 import puplarDesktop01 from "@/images/projects/puplar-desktop/puplar-desktop-01.png";
 import puplarDesktop02 from "@/images/projects/puplar-desktop/puplar-desktop-02.png";
@@ -121,6 +126,13 @@ export const portfolioProjects: Project[] = [
       { label: "Product", icon: "product" },
       { label: "Web", icon: "web" },
     ],
-    gallery: [sunDialHero],
+    gallery: [
+      sunDialHero,
+      sunDialLibraryEmpty,
+      sunDialLibraryFull,
+      sunDialOptimizing,
+      sunDialSetting,
+      sunDialTranscript,
+    ],
   },
 ];
