@@ -109,7 +109,6 @@ export const portfolioProjects: Project[] = [
       { label: "Product", icon: "product" },
       { label: "Mobile", icon: "mobile" },
     ],
-    links: [{ href: "https://example.com/dash", label: "View live site" }],
     gallery: [dashProjectImage, dashHero],
   },
   {
@@ -122,7 +121,6 @@ export const portfolioProjects: Project[] = [
       { label: "Product", icon: "product" },
       { label: "Web", icon: "web" },
     ],
-    links: [{ href: "https://example.com/sundial", label: "View live site" }],
     gallery: [sunDialHero],
   },
 ];
