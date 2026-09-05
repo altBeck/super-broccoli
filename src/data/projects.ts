@@ -129,8 +129,8 @@ export const portfolioProjects: Project[] = [
     gallery: [
       sunDialHero,
       sunDialLibraryEmpty,
-      sunDialLibraryFull,
       sunDialOptimizing,
+      sunDialLibraryFull,
       sunDialSetting,
       sunDialTranscript,
     ],
