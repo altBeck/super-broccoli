@@ -33,14 +33,14 @@ const bebasNeue = localFont({
 });
 
 const socialImage = {
-  url: "https://www.bekanno.com/beck-kanno-og.png",
+  url: "https://www.bekanno.com/beck-kanno-og-v2.png",
   width: 1200,
   height: 630,
   alt: site.title,
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL("https://www.bekanno.com"),
   title: {
     default: site.title,
     template: `%s — ${site.name}`,
@@ -84,8 +84,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // favicon: src/app/icon.png (smiley). Social share image: public/beck-kanno-og.png.
-  // Canonical/OG URL resolves from SITE_URL (or the Vercel prod domain).
+  // favicon: src/app/icon.png (smiley). Social share image: public/beck-kanno-og-v2.png.
 };
 
 export const viewport: Viewport = {
