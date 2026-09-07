@@ -32,6 +32,13 @@ const bebasNeue = localFont({
   weight: "400",
 });
 
+const socialImage = {
+  url: "https://www.bekanno.com/beck-kanno-og.png",
+  width: 1200,
+  height: 630,
+  alt: site.title,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -58,11 +65,13 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     locale: site.locale,
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
+    images: [socialImage.url],
   },
   robots: {
     index: true,
@@ -75,8 +84,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // favicon: src/app/icon.png (smiley). Social share image: drop a file at
-  // src/app/opengraph-image.(png|jpg) and Next wires og:image automatically.
+  // favicon: src/app/icon.png (smiley). Social share image: public/beck-kanno-og.png.
   // Canonical/OG URL resolves from SITE_URL (or the Vercel prod domain).
 };
 
