@@ -6,48 +6,58 @@ import { SITE_URL, site } from "@/lib/site";
  * root layout.
  */
 export function JsonLd() {
+  const personId = `${SITE_URL}/#person`;
+  const websiteId = `${SITE_URL}/#website`;
+  const profilePageId = `${SITE_URL}/#profilepage`;
+  const bridgeId = `${SITE_URL}/#bridge`;
+  const breezeId = `${SITE_URL}/#breeze`;
+
   const graph = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
-        "@id": `${SITE_URL}/#person`,
+        "@id": personId,
         name: site.name,
         jobTitle: site.role,
         description: site.description,
         url: SITE_URL,
         email: `mailto:${site.email}`,
-        worksFor: {
-          "@type": "Organization",
-          name: site.employer.name,
-          url: site.employer.url,
-          parentOrganization: {
-            "@type": "Organization",
-            name: site.employer.parentOrganization.name,
-            url: site.employer.parentOrganization.url,
-          },
-        },
-        sameAs: [site.socials.github, site.socials.linkedin],
+        worksFor: { "@id": bridgeId },
+        sameAs: [site.socials.github, site.socials.linkedin, site.socials.x],
         knowsAbout: [...site.knowsAbout],
       },
       {
+        "@type": "Organization",
+        "@id": bridgeId,
+        name: site.employer.name,
+        url: site.employer.url,
+        parentOrganization: { "@id": breezeId },
+      },
+      {
+        "@type": "Organization",
+        "@id": breezeId,
+        name: site.employer.parentOrganization.name,
+        url: site.employer.parentOrganization.url,
+      },
+      {
         "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
+        "@id": websiteId,
         url: SITE_URL,
         name: site.title,
         description: site.description,
         dateModified: site.lastModified,
         inLanguage: "en",
-        publisher: { "@id": `${SITE_URL}/#person` },
+        publisher: { "@id": personId },
       },
       {
         "@type": "ProfilePage",
-        "@id": `${SITE_URL}/#profilepage`,
+        "@id": profilePageId,
         url: SITE_URL,
         name: site.title,
-        isPartOf: { "@id": `${SITE_URL}/#website` },
-        about: { "@id": `${SITE_URL}/#person` },
-        mainEntity: { "@id": `${SITE_URL}/#person` },
+        isPartOf: { "@id": websiteId },
+        about: { "@id": personId },
+        mainEntity: { "@id": personId },
         dateModified: site.lastModified,
         inLanguage: "en",
       },

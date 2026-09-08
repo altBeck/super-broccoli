@@ -23,7 +23,7 @@ export const SITE_URL = resolveSiteUrl().replace(/\/+$/, "");
 
 export const site = {
   name: "Beck Kanno",
-  role: "Product Designer",
+  role: "Lead Product Designer",
   title: "Beck Kanno — Product Designer",
   description:
     "Lead Product Designer at Bridge, a Breeze company, turning complex products into clear, scalable experiences through strategy, systems and craft.",
@@ -42,6 +42,7 @@ export const site = {
   socials: {
     github: "https://github.com/altBeck",
     linkedin: "https://linkedin.com/in/kanno-beck",
+    x: "https://x.com/bekanno",
   },
   knowsAbout: [
     "Product Design",

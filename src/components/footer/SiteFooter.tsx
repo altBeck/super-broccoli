@@ -2,7 +2,7 @@ import { FooterEmail } from "./FooterEmail";
 import { FooterWordmark } from "./FooterWordmark";
 
 const LINKEDIN = "https://linkedin.com/in/kanno-beck";
-const TWITTER = "https://x.com/";
+const TWITTER = "https://x.com/bekanno";
 
 /** Solid heart for the "Made With" sign-off — currentColor so it themes. */
 const HeartIcon = () => (
