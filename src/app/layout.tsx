@@ -33,14 +33,14 @@ const bebasNeue = localFont({
 });
 
 const socialImage = {
-  url: "https://www.bekanno.com/beck-kanno-og-v2.png",
+  url: `${SITE_URL}/beck-kanno-og-v2.png`,
   width: 1200,
   height: 630,
   alt: site.title,
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bekanno.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: site.title,
     template: `%s — ${site.name}`,
@@ -49,6 +49,9 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.name, url: SITE_URL }],
   creator: site.name,
+  other: {
+    dateModified: site.lastModified,
+  },
   keywords: [
     "Beck Kanno",
     "Product Designer",

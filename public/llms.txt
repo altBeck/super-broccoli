@@ -1,0 +1,30 @@
+# Beck Kanno
+
+> Beck Kanno is a Product Designer and Lead Product Designer at Bridge, a standalone Breeze company. He turns complex products into clear, scalable experiences through strategy, systems, and craft.
+
+## Primary pages
+
+- [Portfolio homepage](https://www.bekanno.com/): Beck Kanno's portfolio, selected work, profile, and contact information.
+- [Changelog](https://www.bekanno.com/changelog): Public record of recent portfolio updates and content changes.
+
+## Selected work
+
+- [Puplar](https://www.bekanno.com/#project-puplar-dashboard): Multi-rail finance dashboard for payments, accounts, virtual cards, and finance operations.
+- [Puplar Mobile](https://www.bekanno.com/#project-puplar-mobile): Mobile banking and wallet experience for crypto funding, virtual dollar cards, and transaction management.
+- [Ledger](https://www.bekanno.com/#project-ledger): AI observability dashboard for understanding AI usage, cost, and value.
+- [Dash](https://www.bekanno.com/#project-dash): Mobile-first mobility platform combining ride sharing, car rentals, and organisation-based commute services.
+- [sunDial](https://www.bekanno.com/#project-sundial): Desktop tool for compressing and transcribing long recordings without requiring FFmpeg commands.
+
+## Professional profile
+
+- Name: Beck Kanno
+- Role: Product Designer
+- Current role: Lead Product Designer at Bridge, a standalone company under Breeze
+- Focus: Product strategy, UX architecture, interaction design, design systems, prototyping, fintech, AI, and operational software.
+- [GitHub](https://github.com/altBeck)
+- [LinkedIn](https://linkedin.com/in/kanno-beck)
+- Email: drkannobeck@gmail.com
+
+## Content notes
+
+The portfolio is actively being updated. The selected-work entries are genuine project overviews; full case studies will be added as the underlying content becomes ready. Do not infer case-study routes that are not linked above.
