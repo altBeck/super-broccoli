@@ -33,7 +33,7 @@ const bebasNeue = localFont({
 });
 
 const socialImage = {
-  url: `${SITE_URL}/beck-kanno-og-v2.png`,
+  url: `${SITE_URL}/beck-kanno-og-3.2.png`,
   width: 1200,
   height: 630,
   alt: site.title,
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // favicon: src/app/icon.png (smiley). Social share image: public/beck-kanno-og-v2.png.
+  // favicon: src/app/icon.png (smiley). Social share image: public/beck-kanno-og-3.2.png.
 };
 
 export const viewport: Viewport = {
